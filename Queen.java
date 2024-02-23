@@ -7,7 +7,7 @@ import java.util.*;
  * @date 2024/2/2 16:05
  */
  public class Queen {
-    public List<List<String>> solveNQueens(int n) {
+    public static List<List<String>> solveNQueens(int n) {
         List<List<String>> solutions = new ArrayList<List<String>>();
         int[] queens = new int[n];
         Arrays.fill(queens, -1);
@@ -18,7 +18,7 @@ import java.util.*;
         return solutions;
     }
 
-    public void backtrack(List<List<String>> solutions, int[] queens, int n, int row, Set<Integer> columns, Set<Integer> diagonals1, Set<Integer> diagonals2) {
+    public static void backtrack(List<List<String>> solutions, int[] queens, int n, int row, Set<Integer> columns, Set<Integer> diagonals1, Set<Integer> diagonals2) {
         if (row == n) {
             List<String> board = generateBoard(queens, n);
             solutions.add(board);
@@ -48,7 +48,7 @@ import java.util.*;
         }
     }
 
-    public List<String> generateBoard(int[] queens, int n) {
+    public static List<String> generateBoard(int[] queens, int n) {
         List<String> board = new ArrayList<String>();
         for (int i = 0; i < n; i++) {
             char[] row = new char[n];
@@ -57,5 +57,12 @@ import java.util.*;
             board.add(new String(row));
         }
         return board;
+    }
+
+    public static void main(String[] args) {
+      List<List<String>> solveNQueens= Queen.solveNQueens(12);
+      for(List<String> list :solveNQueens){
+          System.out.println(list);
+      }
     }
 }
